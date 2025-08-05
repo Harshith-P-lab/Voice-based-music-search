@@ -1,6 +1,6 @@
 # Voice-based-music-search
 
-This is voice based music search project where the requirements are:
+This is voice based music search project where the requirements are:/n
 Flask
 pyttsx3
 SpeechRecognition
