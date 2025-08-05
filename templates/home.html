@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Find My Beat</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+   <!-- Video Background -->
+   <video autoplay muted loop id="bg-video">
+    <source src="{{ url_for('static', filename='videos/8.gif') }}" type="video/gif">
+    Your browser does not support the video tag.
+  </video>
+
+  <div class="container">
+
+    <!-- Credits Button -->
+    <button class="credits-button" onclick="showCredits()">Credits</button>
+
+    <!-- Main Title -->
+    <h1 class="title">Find My Beat</h1>
+
+    <!-- Microphone Button -->
+    <button class="mic-button" onclick="startListening(event)">🎤</button>
+    <p class="mic-text">Tap to Search</p>
+
+    <!-- Frosted Text Field for Multi-Line Output -->
+    <div class="output-container">
+      <textarea id="output-display" readonly></textarea>
+      <br><br>
+      <!-- Play/Pause Button -->
+    <button id="playPauseButton" class="control-button">Play/Pause</button>
+
+     <!-- Credits Modal -->
+  <div id="credits-modal" class="modal">
+    <div class="modal-content">
+      <!-- Close Button -->
+      <span class="close-button" onclick="closeCredits()">&times;</span>
+
+      <!-- Guided By Section -->
+      <h2>Guided By</h2>
+      <div class="credit-item">
+        <img src="static/images/5.jpeg" alt="Guide Photo">
+        <p>Dr.SANJEEV KUNTE</p>
+      </div>
+
+      <!-- Developers Section -->
+      <h2>Developers</h2>
+      <div class="developers">
+        <div class="developer">
+          <img src="static/images/1.jpeg" alt="Guide Photo">
+          <p>LAXMAN.B</p>
+        </div>
+        <div class="developer">
+          <img src="static/images/2.jpeg" alt="Guide Photo">
+          <p>AHSAN</p>
+        </div>
+        <div class="developer">
+          <img src="static/images/3.jpeg" alt="Guide Photo">
+          <p>ANIRUDH</p>
+        </div>
+        <div class="developer">
+          <img src="static/images/4.jpeg" alt="Guide Photo">
+          <p>HARSHITH</p>
+        </div>
+      </div>
+    </div>
+  </div>
+    </div>
+
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+  <script>  
+  // Function to show the credits modal
+  function showCredits() {
+      document.getElementById('credits-modal').style.display = 'block';
+    }
+
+    // Function to close the credits modal
+    function closeCredits() {
+      document.getElementById('credits-modal').style.display = 'none';
+    }
+
+    // Start listening for audio and send request to backend
+    function startListening(event) {
+      event.preventDefault();
+
+      // Display a processing message
+      document.getElementById('output-display').value = "Skipping or processing audio... Please wait.";
+
+      // Call the Flask backend
+      fetch("/process-audio", {
+        method: "POST",
+      })
+      .then(response => response.json())
+      .then(data => {
+        // Show lyrics and ask user to sing
+        document.getElementById('output-display').value = 
+          data.lyrics_output + "\n\nNow, please sing the song to match the lyrics!";
+
+        // Navigate to index3.html if a song is found
+        
+      })
+       // Toggle play/pause functionality
+    document.getElementById("playPauseButton").addEventListener("click", () => {
+      fetch("/toggle-play", {
+        method: "POST"
+      })
+      .then(response => response.json())
+      .then(data => alert(data.message));
+    });
+
+    }
+  </script>
+</body>
+</html>

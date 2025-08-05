@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Find My Beat</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+   <!-- Video Background -->
+   <video autoplay muted loop id="bg-video">
+    <source src="{{ url_for('static', filename='videos/8.gif') }}" type="video/gif">
+    Your browser does not support the video tag.
+  </video>
+
+  <div class="container">
+    <!-- Back Button -->
+    <button class="back-button" onclick="goBack()">Back</button>
+
+    <!-- Main Title -->
+    <h1 class="title">Find My Beat</h1>
+
+    <!-- Microphone Button -->
+    <button class="mic-button" onclick="startListening(event)">🎤</button>
+    <p class="mic-text">Tap to Search</p>
+
+    <!-- Frosted Text Field for Multi-Line Output -->
+    <div class="output-container">
+      <textarea id="output-display" readonly></textarea>
+    </div>
+
+    <!-- Extract Lyrics Button -->
+    <div style="display: block; margin-bottom: 10px;">
+      <button class="feature-btn" onclick="extractLyrics()">Extract the lyrics</button>
+    </div>
+
+    <!-- Next Button -->
+    <button class="next-button" onclick="goToNextPage()">Next</button>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  <script>
+    // Back button functionality
+    function goBack() {
+      window.history.back();
+    }
+
+    function goToNextPage() {
+      const songTitle = sessionStorage.getItem("songTitle") || "Unknown Song";
+      window.location.href = `/index3?songTitle=${encodeURIComponent(songTitle)}`;
+    }
+
+    // Extract lyrics function
+    function extractLyrics() {
+      document.getElementById('output-display').value = "Extracting lyrics... Please wait.";
+
+      fetch("/extract-lyrics", {
+        method: "POST",
+      })
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('output-display').value = data.lyrics_output || "Error extracting lyrics.";
+      })
+      .catch(error => {
+        console.error("Error:", error);
+        document.getElementById('output-display').value = "Error occurred while extracting lyrics.";
+      });
+    }
+
+    // Start listening for audio and send request to backend
+    function startListening(event) {
+      event.preventDefault();
+      document.getElementById('output-display').value = "Listening for audio... Please wait.";
+
+      fetch("/process-audio", {
+        method: "POST",
+      })
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('output-display').value = data.lyrics_output + "\n\nNow, please sing the song to match the lyrics!";
+        if (data.song_title) {
+          const songTitle = encodeURIComponent(data.song_title);
+          window.location.href = `/index3?songTitle=${songTitle}`;
+        }
+      })
+      .catch(error => {
+        console.error("Error:", error);
+        document.getElementById('output-display').value = "Error occurred while searching.";
+      });
+    }
+  </script>
+</body>
+</html>

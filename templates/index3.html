@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Music Player</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <!-- Video Background -->
+    <video autoplay muted loop id="bg-video">
+      <source src="{{ url_for('static', filename='videos/8.gif') }}" type="video/gif">
+      Your browser does not support the video tag.
+    </video>
+
+    <!-- Title Display -->
+    <br><br><br><br>
+    <input type="text" class="title-display" value="Now Playing: {{ song_title }}" readonly>
+    </br></br>
+
+    <!-- Back Button -->
+    <button class="back-button" onclick="goBack()">Back</button>
+
+    <!-- Play/Pause Button -->
+    <button id="playPauseButton" class="control-button">Play/Pause</button>
+
+    <!-- Home Button -->
+    <button class="feature-btn2" onclick="restartProcess()">HOME</button>
+  </div>
+
+  <script>
+    // Function to get query parameters from the URL
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+
+    // Back button functionality
+    function goBack() {
+      window.history.back();
+    }
+
+    // Restart the entire process (reload the page and restart the backend process)
+    function restartProcess() {
+      window.location.href = '/restart';
+    }
+
+    // Toggle play/pause functionality
+    document.getElementById("playPauseButton").addEventListener("click", () => {
+      fetch("/toggle-play", {
+        method: "POST"
+      })
+      .then(response => response.json())
+      .then(data => alert(data.message));
+    });
+  </script>
+</body>
+</html>

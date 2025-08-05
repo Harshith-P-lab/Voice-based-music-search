@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Project</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<style>
+  .team-member {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+</style>
+<body>
+   <!-- Video Background -->
+   <video autoplay muted loop id="bg-video">
+    <source src="{{ url_for('static', filename='videos/8.gif') }}" type="video/gif">
+    Your browser does not support the video tag.
+  </video>
+  <div class="container">
+    <!-- Project Image -->
+    <div class="project-image" style="text-align: center;">
+      <img src="{{ url_for('static', filename='images/logo2.png') }}" alt="Project Image" style="width: 600px; height: auto; border-radius: 10px;">
+    </div>
+
+    <!-- Project Title -->
+    <h1 class="title">Voice Based Music Search</h1>
+
+    <!-- Team Members and Guide -->
+    <div style="display: flex; justify-content: space-between; margin-top: 30px;">
+      <div class="frosted" style="width: 30%; padding: 20px;font-size: 20px;">
+       <h2>Team Members</h2>
+       <ul style="list-style-type: none;">
+        <li class="team-member"><span>LAXMAN</span><span>4JN22IS082</span></li>
+        <li class="team-member"><span>ANIRUD</span><span>4JN22IS113</span></li>
+        <li class="team-member"><span>AHSAN</span><span>4JN22IS091</span></li>
+        <li class="team-member"><span>HARSHITH</span><span>4JN22IS104</span></li>
+      </ul>
+      </div>
+
+      <div class="frosted" style="width: 30%; padding: 20px; font-size: 20px;margin-right: -450px;">
+        <h2>Guide</h2>
+        <p>
+          Dr. Sanjeev Kunte     <sub>B.E</sub>, <sub>M.Tech</sub>, <sub>Ph.D</sub>
+        </p>
+        <p>Professor Department of ISE</p>
+      </div>
+
+     <!-- Next Button -->
+  <div style="display: block; margin-bottom: 10px;">
+    <button class="feature-btn" onclick="location.href='/next'">Next</button>
+  </div>
+  </div>
+</body>
+</html>
