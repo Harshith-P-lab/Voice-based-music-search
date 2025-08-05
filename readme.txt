@@ -14,7 +14,7 @@ create a folder called song in desktop,and a text file called song inside it
 save your songs in that folder in mp4 format
 
 place your lyrics.py file in desktop 
-
+you must have a internet connection to run this
 run app.py file 
 
 u can change the html file as per your wish
