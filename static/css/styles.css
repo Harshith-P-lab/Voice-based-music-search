@@ -1,0 +1,479 @@
+/* General Reset */
+body {
+  margin: 0;
+  font-family: 'Dancing Script', cursive; /* Frosted cursive font */
+  background: #f9f9f9;
+  color: #ffffff;
+  height: 100vh; /* Full height of the viewport */
+  background-image: url('8.gif'); /* Background GIF */
+  background-size: cover; /* Cover entire page */
+  background-position: center center; /* Center the GIF */
+  background-repeat: no-repeat; /* No repetition */
+}
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden; /* Disable scrolling */
+}
+
+/* Background Video (if needed) */
+#bg-video {
+  background: url("/static/videos/8.gif") no-repeat center center;
+  position: absolute;      /* Position the video absolutely */
+  top: 0;                  /* Align to the top of the screen */
+  left: 0;                 /* Align to the left of the screen */
+  width: 100vw;             /* Make the video take up the full width */
+  height: 100vh;            /* Make the video take up the full height */
+  object-fit: cover;       /* Ensure the video covers the whole screen */
+  z-index: -1;  
+  border-top: 30px solid black;   /* Add a border to the left side */
+  border-bottom: 30px solid black;
+  border-left: 300px solid black;   /* Add a border to the left side */
+  border-right: 300px solid black; /* Add a border around the video */
+  box-sizing: border-box;           /* Keep the video behind other content */
+}
+
+
+/* Frosted Glass Effect */
+.frosted {
+  color: white;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2),
+               0 0 10px rgba(255, 255, 255, 0.6); /* Frosted glow */
+  font-family: 'Dancing Script', cursive; /* Cursive font */
+  backdrop-filter: blur(10px); /* Glass-like blur */
+  background: rgba(255, 255, 255, 0.2); /* Transparent glass effect */
+  padding: 10px;
+  border-radius: 10px;
+  display: inline-block;
+  transition: transform 0.2s, box-shadow 0.3s;
+}
+
+.frosted:hover {
+  transform: translateY(-2px); /* Subtle lift effect */
+  text-shadow: 0 4px 8px rgba(255, 255, 255, 0.6),
+               0 0 15px rgba(255, 255, 255, 0.8);
+}
+
+/* Container */
+.container {
+  text-align: center;
+  padding: 20px;
+}
+
+/* Title Styling */
+.title {
+  font-size: 5rem;
+  margin-top: 10px;
+  font-family: 'Dancing Script', cursive;
+  color: white;
+  text-shadow: 0 4px 6px rgba(0, 0, 0, 0.2),
+               0 0 10px rgba(255, 255, 255, 0.6);
+}
+
+/* Back Button */
+.back-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(255, 255, 255, 0.2); /* Transparent glass effect */
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  padding: 10px 15px;
+  font-size: 1rem;
+  color: white;
+  font-family: 'Dancing Script', cursive; /* Frosted cursive */
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 
+              inset 0 2px 4px rgba(255, 255, 255, 0.25);
+  transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+}
+
+.back-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px); /* Lift effect */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3),
+              inset 0 3px 5px rgba(255, 255, 255, 0.3);
+}
+
+/* Credits Button */
+.credits-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  padding: 10px 15px;
+  font-size: 1rem;
+  font-family: 'Dancing Script', cursive; /* Frosted cursive */
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2),
+              inset 0 2px 4px rgba(255, 255, 255, 0.25);
+  transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+}
+
+.credits-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3),
+              inset 0 3px 5px rgba(255, 255, 255, 0.3);
+}
+
+/* Microphone Button */
+.mic-button {
+  width: 150px;
+  height: 150px;
+  border: none;
+  border-radius: 50%;
+  font-size: 5rem;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  font-family: 'Dancing Script', cursive; /* Frosted cursive */
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3), 
+              inset 0 3px 6px rgba(255, 255, 255, 0.2);
+  transition: transform 0.2s, background 0.3s, box-shadow 0.3s;
+}
+
+.mic-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-5px); /* Larger lift effect */
+  box-shadow: 0 12px 15px rgba(0, 0, 0, 0.4),
+              inset 0 4px 8px rgba(255, 255, 255, 0.3);
+}
+/* Example Rule for Text Below Mic Button */
+.mic-text {
+  font-size: 2rem; /* Adjust font size here */
+  font-family: 'Dancing Script', cursive; /* Frosted cursive font */
+  color: white; /* Text color */
+  text-align: center; /* Center-align text */
+  margin-top: 10px; /* Add spacing above */
+}
+
+/* Features Section */
+.features-section {
+  margin-top: 50px;
+}
+
+.features-line {
+  width: 80%;
+  height: 2px;
+  background: #bdc3c7;
+  margin: 20px auto;
+}
+
+.features-text {
+  font-size: 1.5rem;
+  font-family: 'Dancing Script', cursive;
+  color: #f9f9f9;
+  margin-bottom: 20px;
+}
+
+/* Feature Buttons */
+.feature-btn {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  top: 550px; /* You can adjust this value if needed */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 10px 20px;
+  font-family: 'Dancing Script', cursive;
+  color: white;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2),
+              inset 0 2px 4px rgba(255, 255, 255, 0.25);
+  transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+
+  position: absolute; /* Position the button absolutely */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Offset by 50% of the button's width */
+  bottom: 30px; /* Adjust the bottom space as needed */
+}
+
+.feature-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-5px) translateX(-50%); /* Larger lift effect */
+  box-shadow: 0 12px 15px rgba(0, 0, 0, 0.4),
+              inset 0 4px 8px rgba(255, 255, 255, 0.3);
+}
+
+.feature-btn2 {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  padding: 10px 15px;
+  font-size: 1rem;
+  font-family: 'Dancing Script', cursive;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2),
+              inset 0 2px 4px rgba(255, 255, 255, 0.25);
+  transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+}
+
+.feature-btn2:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3),
+              inset 0 3px 5px rgba(255, 255, 255, 0.3);
+}
+
+
+/* Credits Modal */
+/* Modal container to cover the full screen */
+/* Modal container to cover the full screen */
+.modal {
+  display: none;                  /* Hidden by default */
+  position: fixed;                /* Fixed position to stay on screen */
+  top: 0;                         /* Align to the top */
+  left: 0;                        /* Align to the left */
+  width: 100%;                    /* Full width */
+  height: 100%;                   /* Full height */
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  z-index: 1000;                  /* Ensure it appears above other content */
+  justify-content: center;        /* Center horizontally */
+  align-items: center;            /* Center vertically */
+}
+
+/* Modal content */
+.modal-content {
+  background-color: black;           /* Black background for the content */
+  color: white;                      /* White text */
+  padding: 20px;                     /* Padding inside the content */
+  border-radius: 10px;               /* Rounded corners */
+  width: 1320px;                  /* Max width of 600px */
+  text-align: center;                /* Center text */
+  height: 300px;                     /* Fixed height */
+  overflow-y: auto;                  /* Scroll if content overflows */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25); /* Shadow for better visibility */
+}
+
+
+
+/* Scrollbar Styles */
+.modal-content::-webkit-scrollbar {
+  width: 10px; /* Width of the scrollbar */
+}
+
+.modal-content::-webkit-scrollbar-track {
+  background: rgb(127, 239, 247, 0.829); /* Track color */
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+  background: #000; /* Thumb (scroll) color */
+  border-radius: 5px; /* Rounded corners for the scrollbar */
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+  background: BLACK; /* Darker thumb on hover */
+}
+
+/* For Firefox */
+.modal-content {
+  scrollbar-width: thin; /* Thin scrollbar */
+  scrollbar-color: black rgba(127, 239, 247, 0.829); /* Thumb and track colors */
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #e74c3c;
+}
+/* Credit Item */
+.credit-item, .developer {
+  display: flex;               /* Use flexbox layout */
+  align-items: center;         /* Vertically align the image and name */
+  justify-content: center;     /* Center align the items horizontally */
+  margin-bottom: 20px;         /* Add spacing between each credit item */
+  text-align: center;          /* Center the text */
+}
+
+/* Image in Credit Section */
+.credit-item img, .developer img {
+  width: 200px;                 /* Adjust image size */
+  height: 200px;                /* Adjust image size */
+  border-radius: 0%;          /* Circular images */
+  margin-right: 15px;          /* Space between image and name */
+}
+
+/* Name in Credit Section */
+.credit-item p, .developer p {
+  font-size: 1.2rem;           /* Adjust name font size */
+  color: #fff;                 /* White text color */
+  font-family: 'Cursive', sans-serif; /* Frosted cursive font */
+}
+
+/* Frosted Glass Text Field */
+.output-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+#output-display {
+  width: 50%;
+  height: 100px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  color: white;
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.2rem;
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  resize: none; /* Prevent resizing */
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3), inset 0 3px 6px rgba(255, 255, 255, 0.2);
+  overflow-y: auto; /* Add scroll option for overflowing text */
+}
+
+/* Scrollbar Styling */
+#output-display::-webkit-scrollbar {
+  width: 8px;
+}
+
+#output-display::-webkit-scrollbar-track {
+  background: rgba(127, 239, 247, 0.829);
+}
+
+#output-display::-webkit-scrollbar-thumb {
+  background: #000;
+  border-radius: 5px;
+}
+
+/* Play and Pause Buttons */
+.controls {
+  margin-top: 20px;
+  top:10px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.control-btn {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  top:20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 10px 20px;
+  font-family: 'Dancing Script', cursive;
+  color: white;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2),
+              inset 0 2px 4px rgba(255, 255, 255, 0.25);
+  transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+}
+
+.control-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 15px rgba(0, 0, 0, 0.4), inset 0 4px 8px rgba(255, 255, 255, 0.3);
+}
+
+.next-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  padding: 10px 15px;
+  font-size: 1rem;
+  font-family: 'Dancing Script', cursive;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2),
+              inset 0 2px 4px rgba(255, 255, 255, 0.25);
+  transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+}
+
+.next-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3),
+              inset 0 3px 5px rgba(255, 255, 255, 0.3);
+}
+
+
+
+ /* Frosted Glass Effect */
+    .title-display {
+      width: 50%;
+      height: 100px;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      color: white;
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.2rem;
+      padding: 15px;
+      border: none;
+      border-radius: 10px;
+      resize: none; /* Prevent resizing */
+      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3), inset 0 3px 6px rgba(255, 255, 255, 0.2);
+      overflow-y: auto; /* Add scroll option for overflowing text */
+    }
+
+    /* Buttons with 3D Effect */
+    button {
+      width: 150px;
+      height: 50px;
+      margin: 10px;
+       background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      border: none;
+      border-radius: 15px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background: linear-gradient(to bottom, #4caf50, #3e8e41);
+      color: white;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 -1px 1px rgba(0, 0, 0, 0.1);
+    }
+
+    button:active {
+      transform: translateY(4px);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), inset 0 -1px 1px rgba(0, 0, 0, 0.1);
+    }
+
+
+    .control-button {
+      position: absolute;
+      top:555px; 
+      left: 600px;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 10px;
+      padding: 10px 15px;
+      font-size: 1rem;
+      font-family: 'Dancing Script', cursive;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2),
+                  inset 0 2px 4px rgba(255, 255, 255, 0.25);
+      transition: background 0.3s, transform 0.2s, box-shadow 0.3s;   
+    }
+
+    .control-button:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3),
+                  inset 0 3px 5px rgba(255, 255, 255, 0.3);
+    }
+
+   
